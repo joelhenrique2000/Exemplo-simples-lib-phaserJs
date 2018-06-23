@@ -2,12 +2,14 @@
 	
 	// Instaciamento do "jogo"
 		var game = new Phaser.Game(800,600,Phaser.AUTO,null,{preload:preload,create:create,update:update});
-		var platforms;
+		var platforms, player;
 		
 	// carregamento de recursos
 	function preload() {
 		game.load.image('sky','img/sky.png');
 		game.load.image('platform','img/platform.png');
+		
+		game.load.spritesheet('dude','img/dude.png',32,48);
 	}
 
 	// criação dos elementos do jogo(no contexto do jogo)
@@ -22,6 +24,8 @@
 			platform = platforms.create(400, 400, 'platform');
 			
 			platform = platforms.create(-150, 250, 'platform');
+			
+		player = game.add.sprite(50, game.world.height - 150, 'dude');
 	}
 
 	// regras do jogos
