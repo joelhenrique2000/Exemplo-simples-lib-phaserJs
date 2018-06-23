@@ -81,6 +81,8 @@
 	
 	function collectStar(player, star) {
 		star.kill();
+		score += 10;
+		txtScore.text = "SCORE: " + score;
 	}
 
 
