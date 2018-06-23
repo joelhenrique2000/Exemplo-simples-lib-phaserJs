@@ -2,12 +2,13 @@
 	
 	// Instaciamento do "jogo"
 		var game = new Phaser.Game(800,600,Phaser.AUTO,null,{preload:preload,create:create,update:update});
-		var platforms, player, keys;
+		var platforms, player, keys, stars;
 		
 	// carregamento de recursos
 	function preload() {
 		game.load.image('sky','img/sky.png');
 		game.load.image('platform','img/platform.png');
+		game.load.image('star','img/star.png');
 		
 		game.load.spritesheet('dude','img/dude.png',32,48);
 	}
@@ -39,6 +40,13 @@
 		player.body.collideWorldBounds = true;
 		player.animations.add('left', [0,1,2,3], 10, true);
 		player.animations.add('right', [5,6,7,8], 10, true);
+		
+		stars = game.add.group();
+		stars.enableBody = true;
+		
+		for(var i = 0; i < 12; i++) {
+			var star = stars.create(i*70,0,'star');
+		}
 	}
 
 	// regras do jogos
