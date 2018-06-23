@@ -46,12 +46,15 @@
 		
 		for(var i = 0; i < 12; i++) {
 			var star = stars.create(i*70,0,'star');
+				star.body.gravity.y = 300;
+				star.body.bounce.y = 0.7 + (Math.random()*0.2);
 		}
 	}
 
 	// regras do jogos
 	function update() {
 		game.physics.arcade.collide(player,platforms);
+		game.physics.arcade.collide(stars,platforms);
 		
 		player.body.velocity.x = 0;
 		if(keys.left.isDown) {
