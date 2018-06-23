@@ -19,9 +19,11 @@
 		game.add.sprite(0,0,'sky');
 
 		platforms = game.add.group();
+		platforms.enableBody = true;
 		
 		var platform = platforms.create(0, game.world.height - 64, 'platform');
 			platform.scale.setTo(2,2);
+			platform.body.immovable = true;
 			
 			platform = platforms.create(400, 400, 'platform');
 			
@@ -36,7 +38,7 @@
 
 	// regras do jogos
 	function update() {
-
+		game.physics.arcade.collide(player,platforms);
 	}
 
 
