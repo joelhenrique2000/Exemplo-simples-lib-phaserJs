@@ -14,6 +14,8 @@
 
 	// criação dos elementos do jogo(no contexto do jogo)
 	function create() {
+		game.physics.startSystem(Phaser.Physics.ARCADE);
+		
 		game.add.sprite(0,0,'sky');
 
 		platforms = game.add.group();
@@ -26,6 +28,10 @@
 			platform = platforms.create(-150, 250, 'platform');
 			
 		player = game.add.sprite(50, game.world.height - 150, 'dude');
+		game.physics.arcade.enable(player);
+		player.body.gravity.y = 300;
+		player.body.bounce.y = 0.2;
+		player.body.collideWorldBounds = true;
 	}
 
 	// regras do jogos
