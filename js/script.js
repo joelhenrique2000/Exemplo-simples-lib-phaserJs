@@ -18,6 +18,10 @@
 		
 		var platform = platforms.create(0, game.world.height - 64, 'platform');
 			platform.scale.setTo(2,2);
+			
+			platform = platforms.create(400, 400, 'platform');
+			
+			platform = platforms.create(-150, 250, 'platform');
 	}
 
 	// regras do jogos
