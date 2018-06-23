@@ -2,7 +2,7 @@
 	
 	// Instaciamento do "jogo"
 		var game = new Phaser.Game(800,600,Phaser.AUTO,null,{preload:preload,create:create,update:update});
-		var platforms, player, keys, stars;
+		var platforms, player, keys, stars, txtScore, score = 0;
 		
 	// carregamento de recursos
 	function preload() {
@@ -55,6 +55,7 @@
 	function update() {
 		game.physics.arcade.collide(player,platforms);
 		game.physics.arcade.collide(stars,platforms);
+		game.physics.arcade.overlap(stars,player,collectStar);
 		
 		player.body.velocity.x = 0;
 		if(keys.left.isDown) {
@@ -74,6 +75,10 @@
 			player.body.velocity.y = 165;
 		}
 			
+	}
+	
+	function collectStar(player, star) {
+		star.kill();
 	}
 
 
